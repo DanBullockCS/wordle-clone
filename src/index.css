@@ -1,0 +1,34 @@
+:root {
+    /* Variables */
+    --wordleBlack: #121213;
+    --wordleBorder: #3a3a3c;
+    --keyColor: #818384;
+    --white: white;
+    --link: #6ba1dd;
+}
+
+body {
+  margin: 0;
+  font-family: 'Libre Franklin', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--wordleBlack);
+  color: var(--white);
+}
+
+button {
+  background-color: var(--wordleBlack);
+  color: var(--white);
+  border: 1px solid var(--wordleBorder);
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+a {
+ color: var(--link);
+}
+
+
