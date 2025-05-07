@@ -1,5 +1,10 @@
-
-import React, { CSSProperties, ReactNode, useEffect, useRef, useState } from 'react';
+import React, {
+  CSSProperties,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 // General Modal component
 type ModalProps = {
@@ -10,27 +15,28 @@ type ModalProps = {
 
 const styles: { [key: string]: CSSProperties } = {
   overlay: {
-    position: 'fixed',
+    position: "fixed",
     top: 0,
     left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   content: {
-    padding: '20px',
-    borderRadius: '5px',
-    position: 'relative',
-    border: '1px solid var(--wordleBorder)',
+    padding: "1.25rem",
+    borderRadius: "5px",
+    position: "relative",
+    border: "1px solid var(--wordleBorder)",
+    backgroundColor: "var(--wordleBlack)",
   },
   closeButton: {
-    position: 'absolute',
-    top: '10px',
-    right: '10px',
-    cursor: 'pointer',
+    position: "absolute",
+    top: "10px",
+    right: "10px",
+    cursor: "pointer",
   },
 };
 
@@ -60,14 +66,17 @@ const Modal = ({ children, isOpen, closeModal }: ModalProps) => {
 
   return (
     <div style={styles.overlay} onClick={handleClickOutside}>
-      <div ref={contentRef} style={{
+      <div
+        ref={contentRef}
+        style={{
           ...styles.content,
-          maxHeight: animateOpen ? '1000px' : '0px',
+          maxHeight: animateOpen ? "1000px" : "0px",
           opacity: animateOpen ? 1 : 0,
-          transform: animateOpen ? 'translateY(0)' : 'translateY(-10px)',
-          transition: 'all 0.5s ease-in-out',
-          overflow: 'hidden',
-        }}>
+          transform: animateOpen ? "translateY(0)" : "translateY(-10px)",
+          transition: "all 0.5s ease-in-out",
+          overflow: "hidden",
+        }}
+      >
         <button style={styles.closeButton} onClick={closeModal}>
           X
         </button>

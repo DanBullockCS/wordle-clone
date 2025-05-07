@@ -5,6 +5,9 @@
     --keyColor: #818384;
     --white: white;
     --link: #6ba1dd;
+    --correct: #538d4e;
+    --present: #b59f3b;
+    --wrong: #3a3a3c;
 }
 
 body {
@@ -29,6 +32,18 @@ button {
 
 a {
  color: var(--link);
+}
+
+.key {
+  transition: transform 0.05s linear;
+}
+
+.key:hover {
+  transform: scale(1.05);
+}
+
+.key:active {
+  transform: scale(1);
 }
 
 

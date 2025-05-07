@@ -1,7 +1,12 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import Modal from "./Modal";
 
-const HowToPlayModal = ({isOpen, setIsOpen}: any) => {
+type Props = {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+};
+
+const HowToPlayModal = ({ isOpen, setIsOpen }: Props) => {
   const openModal = () => {
     setIsOpen(true);
   };
@@ -11,7 +16,7 @@ const HowToPlayModal = ({isOpen, setIsOpen}: any) => {
   };
 
   // Open the modal when game begins
-  useEffect(() => { 
+  useEffect(() => {
     openModal();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -22,9 +27,26 @@ const HowToPlayModal = ({isOpen, setIsOpen}: any) => {
       <h3>Guess the Wordle in 6 tries.</h3>
       <ul>
         <li>Each guess must be a valid 5-letter word.</li>
-        <li>The color of the tiles will change to show how close your guess was to the word.</li>
+        <li>
+          The color of the tiles will change to show how close your guess was to
+          the word.
+        </li>
       </ul>
-      <p>Re-created by <a href='https://danbullock.me/' target="_blank" rel="noreferrer">@DanBullockCS</a>. Inspired by <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank" rel="noreferrer">NYT Game</a>.</p>
+      <p>
+        Re-created by{" "}
+        <a href="https://danbullock.me/" target="_blank" rel="noreferrer">
+          @DanBullockCS
+        </a>
+        . Inspired by{" "}
+        <a
+          href="https://www.nytimes.com/games/wordle/index.html"
+          target="_blank"
+          rel="noreferrer"
+        >
+          New York Times Game
+        </a>
+        .
+      </p>
     </Modal>
   );
 };

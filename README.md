@@ -2,9 +2,9 @@
 
 This project was made for showcase purposes of my React.js abilities ~ @DanBullockCS
 
-## Game Requirements 
+## Game Requirements
 
-The Wordle clone will follow the same rules as the existing game we all know and love. The exact requirements are listed below. 
+The Wordle clone will follow the same rules as the existing game we all know and love. The exact requirements are listed below.
 
 1. The player has a total of 6 guesses
 2. Each guess must be a valid word [use API endpoint](https://wordle-apis.vercel.app/api/validate)
@@ -14,7 +14,7 @@ The Wordle clone will follow the same rules as the existing game we all know and
 6. If the player guessed a character that’s in the word and not in the correct position, the square must be highlighted yellow [use API endpoint](https://wordle-apis.vercel.app/api/validate)
 7. If the player guessed a character that’s not in the word, the square must be highlighted grey [use API endpoint](https://wordle-apis.vercel.app/api/validate)
 
-If at any point the instructions are unclear, follow the existing Wordle rules. You won't be penalized for making reasonable assumptions. 
+If at any point the instructions are unclear, follow the existing Wordle rules. You won't be penalized for making reasonable assumptions.
 
 # Create React App Boilerplate:
 
