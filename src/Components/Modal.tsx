@@ -31,6 +31,10 @@ const styles: { [key: string]: CSSProperties } = {
     position: "relative",
     border: "1px solid var(--wordleBorder)",
     backgroundColor: "var(--wordleBlack)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
   },
   closeButton: {
     position: "absolute",

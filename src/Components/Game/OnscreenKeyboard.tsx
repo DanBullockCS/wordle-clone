@@ -27,7 +27,7 @@ const styles: { [key: string]: CSSProperties } = {
   },
   key: {
     padding: "1vw 1.5vw",
-    margin: "0 0.5vw",
+    margin: "0 2px",
     borderRadius: "5px",
     cursor: "pointer",
     fontSize: "min(4vw, 1.25em)",

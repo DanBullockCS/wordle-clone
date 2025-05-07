@@ -55,7 +55,7 @@ const InvisibleInput = ({
       }}
       onKeyDown={(e) => {
         !disabled && handleKeyPress(e.key);
-        if (e.key === "Enter" && modal) {
+        if ((e.key === "Enter" || e.key === "Escape") && modal) {
           closeModal();
         }
       }}
