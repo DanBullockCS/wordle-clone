@@ -81,6 +81,10 @@ const Game = ({ modal, setModal }: Props) => {
     } else if (key.toUpperCase() === "ENTER") {
       if (currentWord.length === 5) {
         handleSubmit(currentWord);
+      } else {
+        setResultString("Not enough letters! Please enter a 5 letter word.");
+        setModal("gameOver");
+        return;
       }
     } else {
       setCurrentWord((prev) => {
@@ -103,10 +107,7 @@ const Game = ({ modal, setModal }: Props) => {
 
   // Call API to validate word
   const handleSubmit = async (word: string) => {
-    if (currentRow >= 6) {
-      console.log("No more rows left!");
-      return;
-    }
+    if (currentRow >= 6) return;
 
     if (validating) {
       console.log("Already validating...");
@@ -206,9 +207,12 @@ const Game = ({ modal, setModal }: Props) => {
 
   return (
     <div style={styles.container}>
+      {/* Game Elements */}
       <InvisibleInput
         handleKeyPress={handleKeyPress}
         disabled={Boolean(validating || modal || gameOver)}
+        closeModal={() => setModal("")} // Close modal on Enter key press
+        modal={modal}
       />
       <Board board={board} scoreBoard={scoreBoard} />
       <OnscreenKeyboard
@@ -218,7 +222,7 @@ const Game = ({ modal, setModal }: Props) => {
         disabled={Boolean(validating || modal || gameOver)}
       />
       <Loader isLoading={validating} />
-
+      {/* Modals */}
       <InvalidWordModal isOpen={modal === "invalidWord"} setIsOpen={setModal} />
       <GameOverModal
         isOpen={modal === "gameOver"}
