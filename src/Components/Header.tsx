@@ -1,4 +1,4 @@
-import React, { CSSProperties, useState } from "react";
+import React, { CSSProperties } from "react";
 import HowToPlayModal from "./HowToPlayModal";
 
 const styles: { [key: string]: CSSProperties } = {
@@ -12,9 +12,12 @@ const styles: { [key: string]: CSSProperties } = {
   },
 };
 
-const Header = () => {
-  const [isOpen, setIsHowToPlayModalOpen] = useState(false);
+type Props = {
+  modal: string;
+  setModal: React.Dispatch<React.SetStateAction<string>>;
+};
 
+const Header = ({ modal, setModal }: Props) => {
   return (
     <header>
       <div style={styles.header}>
@@ -24,10 +27,10 @@ const Header = () => {
             @DanBullockCS
           </a>
         </p>
-        <button onClick={() => setIsHowToPlayModalOpen(true)}>?</button>
+        <button onClick={() => setModal("howToPlay")}>?</button>
       </div>
 
-      <HowToPlayModal isOpen={isOpen} setIsOpen={setIsHowToPlayModalOpen} />
+      <HowToPlayModal isOpen={modal === "howToPlay"} setIsOpen={setModal} />
     </header>
   );
 };

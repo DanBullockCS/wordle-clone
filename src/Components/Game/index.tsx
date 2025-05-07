@@ -2,6 +2,9 @@ import React, { CSSProperties, useEffect, useRef, useState } from "react";
 import Board from "./Board";
 import OnscreenKeyboard from "./OnscreenKeyboard";
 import InvisibleInput from "./InvisibleInput";
+import Loader from "./Loader";
+import InvalidWordModal from "./InvalidWordModal";
+import GameOverModal from "./GameOverModal";
 
 const styles: { [key: string]: CSSProperties } = {
   container: {
@@ -12,7 +15,12 @@ const styles: { [key: string]: CSSProperties } = {
   },
 };
 
-const Game = () => {
+type Props = {
+  modal: string;
+  setModal: React.Dispatch<React.SetStateAction<string>>;
+};
+
+const Game = ({ modal, setModal }: Props) => {
   const invisibleInputRef = useRef<HTMLInputElement>(null);
 
   const [board, setBoard] = useState<string[][]>(
@@ -28,7 +36,8 @@ const Game = () => {
   const [letterStates, setLetterStates] = useState<{
     [letter: string]: number;
   }>({}); // Keep track of the state of each letter
-  const [isResultModalOpen, setIsResultModalOpen] = useState(false);
+  const [resultString, setResultString] = useState(""); // Result string for the game over modal
+  const [gameOver, setGameOver] = useState(false); // Flag to indicate if the game is over
 
   useEffect(() => {
     // Focus the invisible input to capture keyboard events
@@ -132,7 +141,7 @@ const Game = () => {
       if (!data.is_valid_word) {
         console.error("Invalid word:", currentWord);
         setValidating(false);
-        alert("Invalid word! Try again.");
+        setModal("invalidWord");
         return;
       }
 
@@ -165,26 +174,56 @@ const Game = () => {
         setCurrentWord("");
 
         setValidating(false);
+
+        // Check if they guessed the word completely right and end game
+        if (data.score.every((value: number) => value === 2)) {
+          setGameOver(true);
+          setResultString(
+            "Congratulations! You guessed the word! It was " + word
+          );
+          setModal("gameOver");
+          return;
+        }
+
+        // Check if they used all their attempts and are submitting on the last row.
+        if (currentRow === 5) {
+          setGameOver(true);
+          setResultString("Game Over! You have used all your attempts.");
+          setModal("gameOver");
+        }
       }
     } catch (error) {
       console.error(
         "There was an error sending the request to the server:",
         error
       );
-      alert(
+      setResultString(
         "There was an error sending the request to the server. Please try again later."
       );
+      setModal("gameOver");
     }
   };
 
   return (
     <div style={styles.container}>
-      <InvisibleInput handleKeyPress={handleKeyPress} />
+      <InvisibleInput
+        handleKeyPress={handleKeyPress}
+        disabled={Boolean(validating || modal || gameOver)}
+      />
       <Board board={board} scoreBoard={scoreBoard} />
       <OnscreenKeyboard
         onKeyPress={handleKeyPress}
         activeKey={activeKey}
         letterStates={letterStates}
+        disabled={Boolean(validating || modal || gameOver)}
+      />
+      <Loader isLoading={validating} />
+
+      <InvalidWordModal isOpen={modal === "invalidWord"} setIsOpen={setModal} />
+      <GameOverModal
+        isOpen={modal === "gameOver"}
+        setIsOpen={setModal}
+        content={resultString}
       />
     </div>
   );

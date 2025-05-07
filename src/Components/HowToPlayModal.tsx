@@ -1,25 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Modal from "./Modal";
 
 type Props = {
   isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
+  setIsOpen: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const HowToPlayModal = ({ isOpen, setIsOpen }: Props) => {
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
   const closeModal = () => {
-    setIsOpen(false);
+    setIsOpen("");
   };
-
-  // Open the modal when game begins
-  useEffect(() => {
-    openModal();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <Modal isOpen={isOpen} closeModal={closeModal}>

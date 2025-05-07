@@ -1,4 +1,4 @@
-import React, { CSSProperties, useEffect, useRef } from "react";
+import { CSSProperties, useEffect, useRef } from "react";
 
 // Invisible input to track user keyboard input if not using onscreen keyboard
 
@@ -13,9 +13,10 @@ const styles: { [key: string]: CSSProperties } = {
 
 type Props = {
   handleKeyPress: (key: string) => void;
+  disabled: boolean;
 };
 
-const InvisibleInput = ({ handleKeyPress }: Props) => {
+const InvisibleInput = ({ handleKeyPress, disabled }: Props) => {
   const invisibleInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -39,7 +40,7 @@ const InvisibleInput = ({ handleKeyPress }: Props) => {
           invisibleInputRef.current.focus();
         }
       }}
-      onKeyDown={(e) => handleKeyPress(e.key)}
+      onKeyDown={(e) => !disabled && handleKeyPress(e.key)}
     />
   );
 };

@@ -1,9 +1,10 @@
-import React, { CSSProperties } from "react";
+import { CSSProperties } from "react";
 
 type Props = {
   onKeyPress: (key: string) => void;
   activeKey: string | null;
   letterStates: { [letter: string]: number };
+  disabled: boolean;
 };
 
 const KEYS = [
@@ -45,7 +46,12 @@ const styles: { [key: string]: CSSProperties } = {
   },
 };
 
-const OnscreenKeyboard = ({ onKeyPress, activeKey, letterStates }: Props) => {
+const OnscreenKeyboard = ({
+  onKeyPress,
+  activeKey,
+  letterStates,
+  disabled,
+}: Props) => {
   const getKeyColor = (key: string) => {
     const status = letterStates[key.toUpperCase()];
     switch (status) {
@@ -78,7 +84,7 @@ const OnscreenKeyboard = ({ onKeyPress, activeKey, letterStates }: Props) => {
                 backgroundColor: getKeyColor(key),
               }}
               className="key"
-              onClick={() => onKeyPress(key)}
+              onClick={() => !disabled && onKeyPress(key)}
             >
               {key}
             </button>
