@@ -6,7 +6,7 @@ This project was made for showcase purposes of my React.js abilities ~ @DanBullo
 
 - [ ] Refactor using CSS framework like styled-components or tailwind css.
 - [ ] Use that framework to make more mobile friendly.
-- [ ] Add Jest tests to show app is working
+- [x] Add Jest tests to show app is working
 
 # Create React App Boilerplate & How to Run:
 
