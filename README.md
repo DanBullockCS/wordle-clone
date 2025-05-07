@@ -2,21 +2,13 @@
 
 This project was made for showcase purposes of my React.js abilities ~ @DanBullockCS
 
-## Game Requirements
+## Future additions not in scope of challenge
 
-The Wordle clone will follow the same rules as the existing game we all know and love. The exact requirements are listed below.
+- [ ] Refactor using CSS framework like styled-components or tailwind css.
+- [ ] Use that framework to make more mobile friendly.
+- [ ] Add Jest tests to show app is working
 
-1. The player has a total of 6 guesses
-2. Each guess must be a valid word [use API endpoint](https://wordle-apis.vercel.app/api/validate)
-3. The player must be able to input their guess using their keyboard and pressing enter to submit
-4. Guesses that are not valid words don’t impact their remaining number of guesses
-5. If the player guessed a character that’s in the word and in the correct position, the square must be highlighted green [use API endpoint](https://wordle-apis.vercel.app/api/validate)
-6. If the player guessed a character that’s in the word and not in the correct position, the square must be highlighted yellow [use API endpoint](https://wordle-apis.vercel.app/api/validate)
-7. If the player guessed a character that’s not in the word, the square must be highlighted grey [use API endpoint](https://wordle-apis.vercel.app/api/validate)
-
-If at any point the instructions are unclear, follow the existing Wordle rules. You won't be penalized for making reasonable assumptions.
-
-# Create React App Boilerplate:
+# Create React App Boilerplate & How to Run:
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
