@@ -122,7 +122,8 @@ const Game = ({ modal, setModal }: Props) => {
 
     try {
       const response = await fetch(
-        "https://wordle-apis.vercel.app/api/validate",
+        // "https://wordle-apis.vercel.app/api/validate",
+        "https://wordle-backend-tau.vercel.app/api/validate",
         {
           method: "POST",
           headers: {
@@ -202,6 +203,7 @@ const Game = ({ modal, setModal }: Props) => {
         "There was an error sending the request to the server. Please try again later."
       );
       setModal("gameOver");
+      setValidating(false);
     }
   };
 
